@@ -11,7 +11,7 @@ public class LinkedListImpl implements LinkedList {
         boolean isItemInList = false;
 
         while(tmp != null) {
-            if (tmp.data.equals(thisItem)) {
+            if (tmp.data.contentEquals(thisItem)) {
                 isItemInList = true;
                 break;
             }
@@ -31,7 +31,7 @@ public class LinkedListImpl implements LinkedList {
         //add to the end of the list
         ListItem newItem = new ListItem(value);
 
-        if (head == null) {
+        if (lastItem == null) { // lastItem is null if head is null
             head = newItem;
             this.tail = head;
         }
@@ -43,15 +43,12 @@ public class LinkedListImpl implements LinkedList {
     }
 
     private ListItem getLastItem() {
-        ListItem lastItem;
-        if (head == null)
-            lastItem = null;
-        else {
-            lastItem = head;
-            // last node points to null
-            while (lastItem.next != null)
-                lastItem = lastItem.next;
-        }
+        ListItem lastItem = head;
+        if (lastItem == null) return null; // exit quickly + avoid null pointer
+        // last node points to null
+        while (lastItem.next != null)
+            lastItem = lastItem.next;
+
         return lastItem;
     }
 
@@ -89,7 +86,7 @@ public class LinkedListImpl implements LinkedList {
         ListItem tmp = head;
         ListItem prev = head;
         while(tmp != null) {
-            if (tmp.data.equals(thisItem)) {
+            if (tmp.data.contentEquals(thisItem)) {
                 if (tmp == tail && tmp != head) {
                     prev.next = null;
                     this.tail = prev;
@@ -113,14 +110,14 @@ public class LinkedListImpl implements LinkedList {
 
     @Override
     public Boolean insertBefore(String newItem, String itemToInsertBefore) {
-        if (!(isItemInList(itemToInsertBefore))) {
+        if (!(isItemInList(itemToInsertBefore)) || (isItemInList(newItem))) {
             return false;
         }
         boolean added = false;
         ListItem tmp = head;
         ListItem prev = head;
         while(tmp != null) {
-            if (tmp.data.equals(itemToInsertBefore)) {
+            if (tmp.data.contentEquals(itemToInsertBefore)) {
                 ListItem item = new ListItem(newItem);
                 if (prev == head) {
                     item.next = tmp;
@@ -140,13 +137,13 @@ public class LinkedListImpl implements LinkedList {
 
     @Override
     public Boolean insertAfter(String newItem, String itemToInsertAfter) {
-        if (!(isItemInList(itemToInsertAfter))) {
+        if (!(isItemInList(itemToInsertAfter)) || (isItemInList(newItem))) {
             return false;
         }
         boolean added = false;
         ListItem tmp = head;
         while(tmp != null) {
-            if (tmp.data.equals(itemToInsertAfter)) {
+            if (tmp.data.contentEquals(itemToInsertAfter)) {
                 ListItem item = new ListItem(newItem);
                 if (tmp == tail) {
                     tmp.next = item;

@@ -47,7 +47,7 @@ public class LinkedListTester {
 				linkedList.insertAfter("ItemTwo", "ItemTwo")); // Repeat Element
 		linkedList.listItems();
 
-		System.out.println("Attempting to add repeat after an element... RESULT: " +
+		System.out.println("Attempting to add after an element... RESULT: " +
 				linkedList.insertAfter("ItemAfterTwo", "ItemTwo"));
 		linkedList.listItems();
 
@@ -64,7 +64,6 @@ public class LinkedListTester {
 					linkedList.deleteItem("ItemTwo"));
 			System.out.println("Attempting to remove item from list... RESULT: " +
 					linkedList.deleteItem("ItemThree"));
-
 			linkedList.listItems();
 
 		}
@@ -74,6 +73,10 @@ public class LinkedListTester {
 		linkedList.listItems();
 		System.out.println("Attempting to add to list... RESULT: " +
 				linkedList.addItem("NewItemTwo"));
+		linkedList.listItems();
+
+		System.out.println("Attempting to remove item from list... RESULT: " + // not case matching
+				linkedList.deleteItem("newitemtwo"));
 		linkedList.listItems();
 
 
