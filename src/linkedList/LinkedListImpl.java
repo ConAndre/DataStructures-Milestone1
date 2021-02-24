@@ -11,7 +11,7 @@ public class LinkedListImpl implements LinkedList {
         boolean isItemInList = false;
 
         while(tmp != null) {
-            if (tmp.data.equalsIgnoreCase(thisItem)) {
+            if (tmp.data.equals(thisItem)) {
                 isItemInList = true;
                 break;
             }
@@ -69,13 +69,15 @@ public class LinkedListImpl implements LinkedList {
     @Override
     public void listItems() {
         ListItem tmp = head;
-
+        if (tmp == null) {
+            System.out.println("List is empty!");
+            return;
+        }
         while(tmp != null) {
             System.out.println("item: " + tmp.data);
             tmp = tmp.next;
         }
-        System.out.println("HEAD " + head.data);
-        System.out.println("TAIL " + tail.data);
+
     }
 
     @Override
@@ -87,7 +89,7 @@ public class LinkedListImpl implements LinkedList {
         ListItem tmp = head;
         ListItem prev = head;
         while(tmp != null) {
-            if (tmp.data.equalsIgnoreCase(thisItem)) {
+            if (tmp.data.equals(thisItem)) {
                 if (tmp == tail && tmp != head) {
                     prev.next = null;
                     this.tail = prev;
@@ -95,9 +97,7 @@ public class LinkedListImpl implements LinkedList {
                     if (tmp.next != null) {
                         this.head = tmp.next;
                     } else {
-                        this.head.data = null;
-                        this.head.next = null;
-                        this.head = tail;
+                        this.head = null;
                     }
                 } else {
                     prev.next = tmp.next;
@@ -120,7 +120,7 @@ public class LinkedListImpl implements LinkedList {
         ListItem tmp = head;
         ListItem prev = head;
         while(tmp != null) {
-            if (tmp.data.equalsIgnoreCase(itemToInsertBefore)) {
+            if (tmp.data.equals(itemToInsertBefore)) {
                 ListItem item = new ListItem(newItem);
                 if (prev == head) {
                     item.next = tmp;
@@ -146,7 +146,7 @@ public class LinkedListImpl implements LinkedList {
         boolean added = false;
         ListItem tmp = head;
         while(tmp != null) {
-            if (tmp.data.equalsIgnoreCase(itemToInsertAfter)) {
+            if (tmp.data.equals(itemToInsertAfter)) {
                 ListItem item = new ListItem(newItem);
                 if (tmp == tail) {
                     tmp.next = item;
