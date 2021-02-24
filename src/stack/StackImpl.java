@@ -65,7 +65,7 @@ public class StackImpl implements Stack {
 
     @Override
     public String peek() {
-        return stack[stack.length-1];
+        return stack[0];
     }
 
     private void capacityDebugPrint(int size, String[] newArray) {
@@ -98,12 +98,13 @@ public class StackImpl implements Stack {
         // Try blocks are more expensive but more readable code. Not gonna be an issue here.
         try {
             String warning = "Warning: Data will be lost from indices "
-                    + "[" + (size+1) + "]-[" + (stack.length-1) + "]!";
+                    + "[" + (size) + "]-[" + (stack.length-1) + "]!";
             if (stack[size] != null) {
                 System.out.println(warning);
             }
         } catch (Exception ignored) {}
 
+        // Not sure how to handle this because a bigger stack gets chopped, not sure which end to chop from. Chopping bottom of stack
         System.arraycopy(stack, 0, newArray, 0, Math.min(size, stack.length));
 
         this.stack = newArray;
