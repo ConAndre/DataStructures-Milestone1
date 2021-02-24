@@ -1,22 +1,19 @@
 package queue;
 
+import java.util.Objects;
+
 public class QueueImpl implements Queue {
 
-    private final String[] queue;
+    private String[] queue;
     private final int MAX_SIZE = 10;
     private final boolean debugMode = true;
 
 
     public QueueImpl() {
-        assert(MAX_SIZE >= 0); // Gonna have problems if it's not
+        assert(MAX_SIZE > 0); // Gonna have problems if it's not
         this.queue = new String[MAX_SIZE];
         if (debugMode) {
-            this.queue[0] = "Test0";
-            this.queue[1] = "Test1";
-            this.queue[2] = "Test2";
-            this.queue[3] = "Test3";
-            this.queue[4] = "Test4";
-            this.queue[5] = "Test5";
+            this.queue[0] = "First";
         }
     }
 
@@ -41,12 +38,30 @@ public class QueueImpl implements Queue {
     }
 
     @Override
-    public void enQueue(String element) {
+    public void enQueue(String element) throws IllegalStateException {
+        if (isFull()) {
+            throw new IllegalStateException("Queue is full!");
+        }
+        String[] newArray = new String[MAX_SIZE];
+        System.arraycopy(queue, 0, newArray, 0, queue.length-1);
+        int count = 0;
+        for (String i : newArray) {
+            if (i == null) {
+                break;
+            }
+            count++;
+        }
+        newArray[count] = element;
+        this.queue = newArray;
     }
 
     @Override
     public String deQueue() {
-        return null;
+        String deQueuedString = Objects.requireNonNull(queue[0], "There exists no value to deQueue! ");
+        String[] newArray = new String[MAX_SIZE];
+        System.arraycopy(queue, 1, newArray, 0, queue.length-1);
+        this.queue = newArray;
+        return deQueuedString;
     }
 
     @Override

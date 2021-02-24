@@ -10,5 +10,4 @@ public class StackTester {
 	public static void runTests(Stack stack) {
 
 	}
-
 }

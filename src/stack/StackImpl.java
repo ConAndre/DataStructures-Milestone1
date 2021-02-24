@@ -1,40 +1,37 @@
 package stack;
 
+import java.util.Objects;
+
 public class StackImpl implements Stack {
 
     private String[] stack;
-    private static final int INITIAL_SIZE = 10;
-    private final boolean debugMode = true;
+    private static final int INITIAL_SIZE = 5;
+    private final boolean debugMode = false;
 
-    public StackImpl() throws ExceptionInInitializerError {
-        if (INITIAL_SIZE <= 0) throw new ExceptionInInitializerError("Invalid INITIAL_SIZE");
+    public StackImpl() {
+        assert(INITIAL_SIZE > 0); // Gonna have problems if it's not
         this.stack = new String[INITIAL_SIZE];
 
         if (debugMode) {
             this.stack[0] = "Test0";
-            this.stack[1] = "Test1";
-            this.stack[2] = "Test2";
-            this.stack[3] = "Test3";
-            this.stack[4] = "Test4";
-            this.stack[5] = "Test5";
         }
     }
 
     @Override
-    public void push(String s) {
-        String[] newArray = new String[stack.length+1];
+    public void push(String s) throws StackOverflowError {
+        if (isFull()) {
+            throw new StackOverflowError("Stack is full!");
+        }
+        String[] newArray = new String[stack.length];
+        System.arraycopy(stack, 0, newArray, 1, stack.length-1);
         newArray[0] = s;
-        System.arraycopy(stack, 0, newArray, 1, newArray.length-1);
         this.stack = newArray;
     }
 
     @Override
-    public String pop() throws RuntimeException {
-        if (stack.length == 0 ) {
-            throw new RuntimeException("There exists no value to pop!");
-        }
-        String[] newArray = new String[stack.length-1];
-        String poppedString = stack[0];
+    public String pop() {
+        String poppedString = Objects.requireNonNull(stack[0], "There exists no value to pop!");
+        String[] newArray = new String[stack.length];
 
         System.arraycopy(stack, 1, newArray, 0, stack.length-1);
         this.stack = newArray;
@@ -56,7 +53,7 @@ public class StackImpl implements Stack {
         if (debugMode) {
             System.out.print("Full? ");
             System.out.println(stack[stack.length-1] != null);
-            System.out.println("Queue Last Element: " + stack[stack.length-1]);
+            System.out.println("Stack Last Element: " + stack[stack.length-1]);
         }
         return stack[stack.length-1] != null;
     }
@@ -92,7 +89,7 @@ public class StackImpl implements Stack {
 
     @Override
     public void setCapacity(int size) throws IllegalArgumentException {
-        if (size < 0) throw new IllegalArgumentException("Parameter cannot be negative!");
+        if (size <= 0) throw new IllegalArgumentException("Parameter must be a positive non-zero!");
         String[] newArray = new String[size];
 
         if (debugMode) {
@@ -119,7 +116,7 @@ public class StackImpl implements Stack {
     @Override
     public void display() {
         int count = 0;
-        System.out.println("Current Queue: ");
+        System.out.println("Current Stack: ");
         for (String i : stack) {
             if (i == null) i = "<Empty>";
             System.out.println("[" + count + "] " + i);
