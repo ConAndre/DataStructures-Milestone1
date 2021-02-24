@@ -6,7 +6,7 @@ public class QueueImpl implements Queue {
 
     private String[] queue;
     private final int MAX_SIZE = 10;
-    private final boolean debugMode = true;
+    private final boolean debugMode = false;
 
 
     public QueueImpl() {
