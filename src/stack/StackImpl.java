@@ -5,7 +5,7 @@ import java.util.Objects;
 public class StackImpl implements Stack {
 
     private String[] stack;
-    private static final int INITIAL_SIZE = 5;
+    private static final int INITIAL_SIZE = 10;
     private final boolean debugMode = false;
 
     public StackImpl() {
