@@ -8,43 +8,45 @@ public class StackTester {
 	}
 	
 	public static void runTests(Stack stack) {
+
+		stack.push("Jack");
+		stack.push("Jeff");
+		stack.push("Jimmy");
+		stack.push("Jeremy");
+		stack.push("John");
+		stack.push("Jello");
 		stack.display();
-		System.out.println("Empty? " + stack.isEmpty());
-		System.out.println("Full? " + stack.isFull());
-		stack.push("First_In");
+		System.out.println();
+
+		System.out.println("Peeking at stack: " + stack.peek());
 		stack.display();
-		System.out.println("Empty? " + stack.isEmpty());
-		System.out.println("Full? " + stack.isFull());
-		stack.push("Second_In");
-		stack.push("Third_In");
-		stack.push("Fourth_In");
-		stack.push("Fifth_In");
+		System.out.println();
+
+		stack.pop();
 		stack.display();
-		System.out.println("Empty? " + stack.isEmpty());
-		System.out.println("Full? " + stack.isFull());
-		System.out.println("Peeking at top: " + stack.peek());
-		System.out.println("Popping: " + stack.pop());
+		System.out.println("Peeking at stack: " + stack.peek());
+		System.out.println();
+
+		stack.push("Mongo");
+		stack.push("Model");
 		stack.display();
-		System.out.println("Empty? " + stack.isEmpty());
-		System.out.println("Full? " + stack.isFull());
-		System.out.println("Resizing Stack size!");
-		stack.setCapacity(2);
+		System.out.println();
+
+		System.out.println("Peeking at stack: " + stack.peek());
+		System.out.println();
+
+		stack.pop();
+		stack.pop();
+		stack.pop();
+		stack.pop();
+		stack.pop();
+		stack.pop();
+		stack.pop();
 		stack.display();
+		System.out.println();
+
 		System.out.println("Empty? " + stack.isEmpty());
-		System.out.println("Full? " + stack.isFull());
-		stack.setCapacity(1);
-		stack.display();
-		System.out.println("Empty? " + stack.isEmpty());
-		System.out.println("Full? " + stack.isFull());
-//		stack.setCapacity(0); // Stack must be positive non-zero error (intended)
-		stack.setCapacity(15);
-		stack.display();
-		System.out.println("Empty? " + stack.isEmpty());
-		System.out.println("Full? " + stack.isFull());
-		stack.push("NewItem");
-		stack.display();
-		System.out.println("Empty? " + stack.isEmpty());
-		System.out.println("Full? " + stack.isFull());
+		System.out.println();
 
 	}
 }

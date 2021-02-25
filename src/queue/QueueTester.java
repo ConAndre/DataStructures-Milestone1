@@ -9,44 +9,33 @@ public class QueueTester {
 
 
 	public static void runTests(Queue queue) {
+		queue.enQueue("Charles");
+		queue.enQueue("Ryan");
+		queue.enQueue("Larence");
+		queue.enQueue("Casey");
+		queue.enQueue("Katty");
+		queue.enQueue("Lukey");
 		queue.display();
-		System.out.println("Empty? " + queue.isEmpty());
-		System.out.println("Full? " + queue.isFull());
-		queue.enQueue("First_In");
+		System.out.println();
+
+		System.out.println("Peeking at queue: " + queue.peek());
+		System.out.println();
+
+		queue.deQueue();
 		queue.display();
-		System.out.println("Empty? " + queue.isEmpty());
-		System.out.println("Full? " + queue.isFull());
-		queue.enQueue("Second_In");
-		queue.enQueue("Third_In");
-		queue.enQueue("Fourth_In");
-		queue.enQueue("Fifth_In");
-		queue.enQueue("Sixth_In");
-		queue.enQueue("Seventh_In");
-		queue.enQueue("Eighth_In");
-		queue.enQueue("Ninth_In");
-		queue.enQueue("Tenth_In");
-//		queue.enQueue("Eleventh_In"); // Queue is full throws error (intended)
+		System.out.println();
+
+		queue.enQueue("Pizza");
+		queue.enQueue("Doc");
+		System.out.println();
+
+		System.out.println("Peeking at queue: " + queue.peek());
+		System.out.println();
+
+		System.out.println("Dequeueing...");
+		System.out.println();
+		queue.deQueue();
 		queue.display();
-		System.out.println("Empty? " + queue.isEmpty());
-		System.out.println("Full? " + queue.isFull());
-		System.out.println("First in queue: " + queue.peek());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		queue.display();
-		System.out.println("Empty? " + queue.isEmpty());
-		System.out.println("Full? " + queue.isFull());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		System.out.println("dequeuing :  " + queue.deQueue());
-		queue.display();
-		System.out.println("Empty? " + queue.isEmpty());
-		System.out.println("Full? " + queue.isFull());
-//		System.out.println("dequeuing :  " + queue.deQueue()); // Queue is empty throws error (intended)
 	}
 
 }

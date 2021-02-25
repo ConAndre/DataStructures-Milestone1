@@ -1,5 +1,10 @@
 package linkedList;
 
+import queue.Queue;
+import queue.QueueImpl;
+import stack.Stack;
+import stack.StackImpl;
+
 public class LinkedListTester {
 
 	public static void main(String[] args) {
@@ -7,77 +12,27 @@ public class LinkedListTester {
 		runTests(linkedList);
 	}
 	public static void runTests(LinkedList linkedList) {
-		linkedList.listItems();
 
-		System.out.println("Attempting to add to list... RESULT: " +
-				linkedList.addItem("ItemOne"));
+		linkedList.addItem("Station 1");
+		linkedList.addItem("Station 2");
+		linkedList.addItem("Station 3");
+		linkedList.addItem("Station 4");
 		linkedList.listItems();
+		System.out.println("Station 4 in list? " + linkedList.isItemInList("Station 4"));
+		System.out.println();
 
-		System.out.println("Attempting to add to list... RESULT: " +
-				linkedList.addItem("ItemTwo"));
-		System.out.println("Attempting to add to list... RESULT: " +
-				linkedList.addItem("ItemThree"));
+		linkedList.deleteItem("Station 3");
 		linkedList.listItems();
+		System.out.println();
 
-		System.out.println("Attempting to add after an element... RESULT: " +
-				linkedList.insertAfter("ItemAfterOne", "ItemOne"));
+		linkedList.insertBefore("Station 3_BEFORE", "Station 4");
 		linkedList.listItems();
+		System.out.println();
 
-		System.out.println("Attempting to add before an element... RESULT: " +
-				linkedList.insertBefore("ItemBeforeOne", "ItemOne"));
+		linkedList.insertAfter("Station 5", "Station 4");
 		linkedList.listItems();
+		System.out.println();
 
-		System.out.println("Attempting to check if item is in list... RESULT: " +
-				linkedList.isItemInList("ItemBeforeOne"));
-		linkedList.listItems();
-
-		System.out.println("Attempting to remove item from list... RESULT: " +
-				linkedList.deleteItem("ItemBeforeOne"));
-		linkedList.listItems();
-
-		System.out.println("Attempting to check if item is in list... RESULT: " +
-				linkedList.isItemInList("ItemBeforeOne"));
-		linkedList.listItems();
-
-		System.out.println("Attempting to add to list... RESULT: " +
-				linkedList.addItem("ItemThree")); // Repeat element
-		linkedList.listItems();
-
-		System.out.println("Attempting to add repeat after an element... RESULT: " +
-				linkedList.insertAfter("ItemTwo", "ItemTwo")); // Repeat Element
-		linkedList.listItems();
-
-		System.out.println("Attempting to add after an element... RESULT: " +
-				linkedList.insertAfter("ItemAfterTwo", "ItemTwo"));
-		linkedList.listItems();
-
-		{
-			System.out.println("Attempting to remove item from list... RESULT: " +
-					linkedList.deleteItem("ItemOne"));
-			System.out.println("Attempting to remove item from list... RESULT: " +
-					linkedList.deleteItem("ItemAfterOne"));
-			System.out.println("Attempting to remove item from list... RESULT: " +
-					linkedList.deleteItem("ItemTwo"));
-			System.out.println("Attempting to remove item from list... RESULT: " +
-					linkedList.deleteItem("ItemAfterTwo"));
-			System.out.println("Attempting to remove item from list... RESULT: " +
-					linkedList.deleteItem("ItemTwo"));
-			System.out.println("Attempting to remove item from list... RESULT: " +
-					linkedList.deleteItem("ItemThree"));
-			linkedList.listItems();
-
-		}
-
-		System.out.println("Attempting to add to list... RESULT: " +
-				linkedList.addItem("NewItem"));
-		linkedList.listItems();
-		System.out.println("Attempting to add to list... RESULT: " +
-				linkedList.addItem("NewItemTwo"));
-		linkedList.listItems();
-
-		System.out.println("Attempting to remove item from list... RESULT: " + // not case matching
-				linkedList.deleteItem("newitemtwo"));
-		linkedList.listItems();
 
 
 
